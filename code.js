@@ -100,7 +100,7 @@ class Button
     stroke(153);
     rect(this.x, this.y, this.width, this.height); //draw button
     noStroke();
-    textSize(14);
+    textSize(40);
     textAlign(CENTER, CENTER);
     if (!this.pressed)
       fill(this.txtColor);
@@ -144,7 +144,7 @@ function setup()
   buttons[13]  = new Button(inputAreaX+sizeOfInputArea/4, inputAreaY+3*sizeOfInputArea/4, sizeOfInputArea/4, sizeOfInputArea/4, "Spc", btnTextColor, btnFillColor);  
   buttons[14]  = new Button(inputAreaX+2*sizeOfInputArea/4, inputAreaY+3*sizeOfInputArea/4, sizeOfInputArea/2, sizeOfInputArea/4, ">", btnTextColor, btnFillColor);
 
-  buttons[15]  = new Button(DEVICE_WIDTH-240, DEVICE_HEIGHT-240, 240, 240, "NEXT>", "#000000", "#ff0000");
+  buttons[15]  = new Button(DEVICE_WIDTH-200, DEVICE_HEIGHT-200, 200, 200, "NEXT>", "#000000", "#ff0000");
 }
 
 //You can modify stuff in here. This is just a basic implementation.
