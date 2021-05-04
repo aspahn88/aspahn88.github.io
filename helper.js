@@ -9,8 +9,8 @@ const isTouchDevice =  function() {
 
 
 function mousePressed() {
-  if( isTouchDevice() )
-   return;
+ // if( isTouchDevice() )
+ //  return;
 
   mousePressX = mouseX;
   mousePressY = mouseY;
@@ -28,8 +28,8 @@ function mousePressed() {
 }
 
 function mouseReleased(e) {
-  if( isTouchDevice() )
-    return;
+  //if( isTouchDevice() )
+  //  return;
 
   if(mousePressX == mouseX && mousePressY == mouseY)
     singleTap();
