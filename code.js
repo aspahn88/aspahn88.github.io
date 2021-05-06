@@ -191,18 +191,18 @@ function draw()
   {
     fill(0);
     textAlign(CENTER);
-    text("Trials completed!",400,200); //output
-    text("Total time taken: " + (finishTime - startTime),400,200+20); //output
-    text("Total letters entered: " + lettersEnteredTotal,400,200+40); //output
-    text("Total letters expected: " + lettersExpectedTotal,400,200+60); //output
-    text("Total errors entered: " + errorsTotal,400,200+80); //output
+    text("Trials complete!",400,200); //output
+    text("Total time taken: " + (finishTime - startTime),400,200+20*scaleFactor); //output
+    text("Total letters entered: " + lettersEnteredTotal,400,200+40*scaleFactor); //output
+    text("Total letters expected: " + lettersExpectedTotal,400,200+60*scaleFactor); //output
+    text("Total errors entered: " + errorsTotal,400,200+80*scaleFactor); //output
     let wpm = (lettersEnteredTotal/5.0)/((finishTime - startTime)/60000); //FYI - 60K is number of milliseconds in minute
-    text("Raw WPM: " + wpm,400,200+100); //output
+    text("Raw WPM: " + wpm,400,200+100*scaleFactor); //output
     let freebieErrors = lettersExpectedTotal*.05; //no penalty if errors are under 5% of chars
-    text("Freebie errors: " + nf(freebieErrors,1,3),400,200+120); //output
+    text("Freebie errors: " + nf(freebieErrors,1,3),400,200+120*scaleFactor); //output
     let penalty = max(errorsTotal-freebieErrors, 0) * .5;
-    text("Penalty: " + penalty,400,200+140);
-    text("WPM w/ penalty: " + (wpm-penalty),400,200+160); //yes, minus, because higher WPM is better
+    text("Penalty: " + penalty,400,200+140*scaleFactor);
+    text("WPM w/ penalty: " + (wpm-penalty),400,200+160*scaleFactor); //yes, minus, because higher WPM is better
 
     return;
   }
