@@ -105,7 +105,7 @@ class Button
     stroke(153);
     rect(this.x, this.y, this.width, this.height); //draw button
     noStroke();
-    textSize(14);
+    textSize(40);
     textAlign(CENTER, CENTER);
     if (!this.pressed)
       fill(this.txtColor);
@@ -230,10 +230,10 @@ function draw()
     //you can very slightly adjust the position of the target/entered phrases and next button
     textAlign(LEFT); //align the text left
     fill(128);
-    text("Phrase " + (currTrialNum+1) + " of " + totalTrialNum, 70, 50); //draw the trial count
+    text("Phrase " + (currTrialNum+1) + " of " + totalTrialNum, 10, 50); //draw the trial count
     fill(128);
-    text("Target:   " + currentPhrase, 70, 100); //draw the target string
-    text("Entered:  " + currentTyped + "_", 70, 140); //draw what the user has entered thus far 
+    text("Target:   " + currentPhrase, 10, 100); //draw the target string
+    text("Entered:  " + currentTyped + "_", 10, 140); //draw what the user has entered thus far 
     //text("Entered:  " + currentTyped, 70, 140); //draw what the user has entered thus far 
 
     if (pressedButton == -1 && clicked)
