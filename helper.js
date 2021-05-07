@@ -15,14 +15,14 @@ function mousePressed() {
   mousePressX = mouseX;
   mousePressY = mouseY;
   
-  if(startTime > 0)
-  {
-    pressed = true;
-    clicked = true;
+  //if(startTime > 0)
+  //{
+  pressed = true;
+  clicked = true;
     
-    clickX = mouseX;
-    clickY = mouseY;
-  }
+  clickX = mouseX;
+  clickY = mouseY;
+  //}
 
   // console.log('mousePressed', mousePressX, mousePressY)
 }
@@ -33,6 +33,9 @@ function mouseReleased(e) {
 
   if(mousePressX == mouseX && mousePressY == mouseY)
     singleTap();
+
+  mousePressX = mouseX;
+  mousePressY = mouseY;
 
   if(startTime > 0)
   {
