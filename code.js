@@ -231,7 +231,7 @@ function draw()
   if (startTime!=0)
   {
     if (debugString != "") {
-      text(debugString, 70, 10);
+      text(debugString, 90, 10);
     }
     
     //you can very slightly adjust the position of the target/entered phrases and next button
