@@ -45,7 +45,7 @@ class Button
   btnColor;
   pressed = false;
   predicted = false;
-  btnPredictedColor = "#aaaaaa";
+  btnPredictedColor = "#808080";
 
   constructor(x, y, width, height, label, txtColor, btnColor)
   {  
@@ -146,8 +146,8 @@ function setup()
   buttons[10]  = new Button(inputAreaX+2*sizeOfInputArea/4, inputAreaY+2*sizeOfInputArea/4, sizeOfInputArea/4, sizeOfInputArea/4, "S", btnTextColor, btnFillColor);
   buttons[11]  = new Button(inputAreaX+3*sizeOfInputArea/4, inputAreaY+2*sizeOfInputArea/4, sizeOfInputArea/4, sizeOfInputArea/4, "T", btnTextColor, btnFillColor);
 
-  buttons[12]  = new Button(inputAreaX, inputAreaY+3*sizeOfInputArea/4, sizeOfInputArea/4, sizeOfInputArea/4, "Del", btnTextColor, "#ff0000");    
-  buttons[13]  = new Button(inputAreaX+sizeOfInputArea/4, inputAreaY+3*sizeOfInputArea/4, sizeOfInputArea/4, sizeOfInputArea/4, "Spc", btnTextColor, "#0000FF");  
+  buttons[12]  = new Button(inputAreaX, inputAreaY+3*sizeOfInputArea/4, sizeOfInputArea/4, sizeOfInputArea/4, "Del", btnTextColor, "#B22222");    
+  buttons[13]  = new Button(inputAreaX+sizeOfInputArea/4, inputAreaY+3*sizeOfInputArea/4, sizeOfInputArea/4, sizeOfInputArea/4, "Spc", btnTextColor, " 	#00008B");  
   buttons[14]  = new Button(inputAreaX+2*sizeOfInputArea/4, inputAreaY+3*sizeOfInputArea/4, sizeOfInputArea/2, sizeOfInputArea/4, ">", btnTextColor, btnFillColor);
 
   buttons[15]  = new Button(DEVICE_WIDTH-200, DEVICE_HEIGHT-200, 200, 200, "NEXT>", "#000000", "#ff0000");
@@ -339,8 +339,7 @@ function commitChar()
        // code for if you want to do a swipe
       // this code swipes if you start on the ">" and swipe to the left (doesn't work on 2nd screen)
       // I found that swipe isn't super useful so this code is pretty basic but you would use this idea for a swipe
-      if ((buttons[pressedButton].getLabel() == "Spc" || buttons[pressedButton].getLabel() == "Z")  &&  mousePressX < buttons[pressedButton].x)
-      {
+    if ((mousePressX + buttons[pressedButton].width/4) < buttons[pressedButton].x)      {
         screen = screen + 1;
         changeScreens();
       }
@@ -359,8 +358,8 @@ function changeScreens()
      for (i = 0; i < (buttons.length - 1); i++) {
       buttons[i].setLabel(screenLetters0[i]);
     }
-    buttons[12].setButtonColor("#ff0000");
-    buttons[13].setButtonColor("#0000FF");
+    buttons[12].setButtonColor("#B22222");
+    buttons[13].setButtonColor("#00008B");
   }
   else if (screen == 1) {
     for (i = 0; i < (buttons.length - 1); i++) {
