@@ -34,8 +34,6 @@ let clickX = 0;
 let clickY = 0;
 let clicked = false;
 
-let debugString = "";
-
 class Button
 {
   x;
@@ -118,12 +116,11 @@ class Button
    }
 }
 
-
 let inputAreaX = DEVICE_WIDTH/2-sizeOfInputArea/2;
 let inputAreaY = DEVICE_HEIGHT/2-sizeOfInputArea/2;
 let buttons = new Array(16);
 
-let predictiveChar = new Array(260);
+let predictiveChar = new Array(26);
 
 //You can add stuff in here. This is just a basic implementation.
 function setup()
@@ -214,26 +211,19 @@ function draw()
   rect(width/2-sizeOfInputArea/2, height/2-sizeOfInputArea/2, sizeOfInputArea, sizeOfInputArea); //input area should be 1" by 1"
 
   //check to see if the user hasn't started yet
-  if (startTime==0 && !mouseIsPressed && !clicked)
-  {
+  if (startTime==0 && !mouseIsPressed && !clicked) {
     fill(128);
     textAlign(CENTER);
     text("Click to start time!", 280, 150); //display this message until the user clicks!
   }
 
-  if (startTime==0 && !mouseIsPressed && clicked)
-  {
+  if (startTime==0 && !mouseIsPressed && clicked) {
     clicked = false;
     nextTrial(); //start the trials!
   }
 
   //if start time does not equal zero, it means we must be in the trials
-  if (startTime!=0)
-  {
-    if (debugString != "") {
-      text(debugString, 90, 10);
-    }
-    
+  if (startTime!=0) {    
     //you can very slightly adjust the position of the target/entered phrases and next button
     textAlign(LEFT); //align the text left
     fill(128);
@@ -243,12 +233,9 @@ function draw()
     text("Entered:  " + currentTyped + "_", 10, 140); //draw what the user has entered thus far 
     //text("Entered:  " + currentTyped, 70, 140); //draw what the user has entered thus far 
 
-    if (pressedButton == -1 && clicked)
-    {
-       for ( i = 0; i < buttons.length; i++)
-      {
-        if (buttons[i].insideButton(clickX, clickY))
-        {
+    if (pressedButton == -1 && clicked) {
+      for ( i = 0; i < buttons.length; i++) {
+        if (buttons[i].insideButton(clickX, clickY)) {
           buttons[i].setPressed(true);
           pressedButton = i;
           break;
@@ -256,14 +243,12 @@ function draw()
       }
     }
   
-    for (i = 0; i < buttons.length; i++)
-    {
+    for (i = 0; i < buttons.length; i++) {
       buttons[i].setPredicted(false);
     }
 
     if (lastLetter >= 0) {
-      for (i = 0; i < predictiveChar[lastLetter].length; i++)
-      {
+      for (i = 0; i < predictiveChar[lastLetter].length; i++) {
         // First screen displayed
         if (!screen && predictiveChar[lastLetter][i] < 20) {
           buttons[predictiveChar[lastLetter][i]].setPredicted(true);
@@ -274,9 +259,7 @@ function draw()
       }
     }
   
-  
-    for (i = 0; i < buttons.length; i++)
-    {
+    for (i = 0; i < buttons.length; i++) {
       buttons[i].draw();
     }
     
@@ -299,10 +282,8 @@ function singleTap()
 function commitChar()
 {
  if (pressedButton != -1) {
-    // the different cases of what the button should do
-    
+    // the different cases of what the button should do   
     if (buttons[pressedButton].insideButton(mousePressX, mousePressY)){
-      debugString = "In button";
       switch (buttons[pressedButton].label) {
         case "Del" :
           if (currentTyped.length > 0) {
@@ -353,18 +334,17 @@ function commitChar()
       }
       changeScreens();
     }
-    else 
-    {
+    else {
        // code for if you want to do a swipe
       // this code swipes if you start on the ">" and swipe to the left (doesn't work on 2nd screen)
       // I found that swipe isn't super useful so this code is pretty basic but you would use this idea for a swipe
-      debugString = "Not in button: " + pressedButton + " " + mousePressX;
       if ((buttons[pressedButton].getLabel() == "Spc" || buttons[pressedButton].getLabel() == "Z")  &&  mousePressX < buttons[pressedButton].x)
       {
         screen = screen + 1;
         changeScreens();
       }
     }
+   
     // reset variables to represent that no button is pressed
     buttons[pressedButton].setPressed(false);
     pressedButton = -1;
@@ -373,20 +353,16 @@ function commitChar()
 
 function changeScreens()
 {
-  screen = screen % 3;
-  if (screen == 0)
-  {
-     for (i = 0; i < (buttons.length - 1); i++)
-    {
+  screen = screen % 2;
+  if (screen == 0) {
+     for (i = 0; i < (buttons.length - 1); i++) {
       buttons[i].setLabel(screenLetters0[i]);
     }
     buttons[12].setButtonColor("#ff0000");
     buttons[13].setButtonColor("#0000FF");
   }
-  else if (screen == 1)
-  {
-     for (i = 0; i < (buttons.length - 1); i++)
-    {
+  else if (screen == 1) {
+    for (i = 0; i < (buttons.length - 1); i++) {
       buttons[i].setLabel(screenLetters1[i]);
     }
     buttons[12].setButtonColor(btnFillColor);
