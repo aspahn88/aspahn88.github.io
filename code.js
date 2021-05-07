@@ -154,7 +154,7 @@ function setup()
 
   predictiveChar[0] = [7,6,11,9,1,10,2,6,5,28,32,22,24,29,20,25];       // A
   predictiveChar[1] = [6,3,0,5,9,8,32];                                 // B
-  predictiveChar[2] = [8,0,4,3,5,9,1,28];                               // C
+  predictiveChar[2] = [8,0,4,3,5,9,1,28,24];                            // C
   predictiveChar[3] = [3,5,8,0,9,28,32];                                // D
   predictiveChar[4] = [9,7,10,2,6,11,4,0,22,26];                        // E
   predictiveChar[5] = [8,5,3,6,28,0];                                   // F
@@ -163,7 +163,7 @@ function setup()
   predictiveChar[8] = [7,1,10,11,8,0,6,3,2,9,22,25,29,28];              // I
   predictiveChar[9] = [28,0,8,3,5,9];                                   // J
   predictiveChar[10] = [3,5,0,8,6,7,10];                                // K
-  predictiveChar[11] = [3,5,0,32,6,8,2,30];                             // L
+  predictiveChar[11] = [3,5,0,32,6,8,2,30,24];                          // L
   predictiveChar[12] = [0,3,5,8,26,28,25,32];                           // M
   predictiveChar[13] = [3,11,8,5,22,0,1,10,2,7];                        // N
   predictiveChar[14] = [7,9,28,26,10,25,21,30,29,8,2,5];                // O
