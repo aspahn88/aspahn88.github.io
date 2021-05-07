@@ -105,7 +105,7 @@ class Button
     stroke(153);
     rect(this.x, this.y, this.width, this.height); //draw button
     noStroke();
-    textSize(40);
+
     textAlign(CENTER, CENTER);
     if (!this.pressed)
       fill(this.txtColor);
@@ -219,6 +219,7 @@ function draw()
 
   if (startTime==0 && !mouseIsPressed && clicked) {
     clicked = false;
+    textSize(40); //set the text size for all displayed text including buttons     
     nextTrial(); //start the trials!
   }
 
