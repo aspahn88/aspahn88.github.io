@@ -34,6 +34,8 @@ let clickX = 0;
 let clickY = 0;
 let clicked = false;
 
+let debugString = "";
+
 class Button
 {
   x;
@@ -228,6 +230,10 @@ function draw()
   //if start time does not equal zero, it means we must be in the trials
   if (startTime!=0)
   {
+    if (debugString != "") {
+      text(debugString, 70, 10);
+    }
+    
     //you can very slightly adjust the position of the target/entered phrases and next button
     textAlign(LEFT); //align the text left
     fill(128);
@@ -296,6 +302,7 @@ function commitChar()
     // the different cases of what the button should do
     
     if (buttons[pressedButton].insideButton(mousePressX, mousePressY)){
+      debugString = "In button";
       switch (buttons[pressedButton].label) {
         case "Del" :
           if (currentTyped.length > 0) {
@@ -351,6 +358,7 @@ function commitChar()
        // code for if you want to do a swipe
       // this code swipes if you start on the ">" and swipe to the left (doesn't work on 2nd screen)
       // I found that swipe isn't super useful so this code is pretty basic but you would use this idea for a swipe
+      debugString = "Not in button: " + pressedButton + " " + mousePressX;
       if ((buttons[pressedButton].getLabel() == "Spc" || buttons[pressedButton].getLabel() == "Z")  &&  mousePressX < buttons[pressedButton].x)
       {
         screen = screen + 1;
