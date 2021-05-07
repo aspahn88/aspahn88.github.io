@@ -9,8 +9,8 @@ const isTouchDevice =  function() {
 
 
 function mousePressed() {
-  //if( isTouchDevice() )
-  // return;
+  if( isTouchDevice() )
+   return;
 
   mousePressX = mouseX;
   mousePressY = mouseY;
@@ -28,27 +28,48 @@ function mousePressed() {
 }
 
 function mouseReleased(e) {
-  //if( isTouchDevice() )
-  //  return;
+  if (isTouchDevice())
+    return;
 
-  if(mousePressX == mouseX && mousePressY == mouseY)
+  if (mousePressX == mouseX && mousePressY == mouseY)
     singleTap();
 
   mousePressX = mouseX;
   mousePressY = mouseY;
 
-  if(startTime > 0)
-  {
+  if(startTime > 0) {
     pressed = false;
    } 
 }
 
 function touchStarted() {
-  singleTap();
+  // singleTap();
+  if (!isTouchDevice())
+    return;
+
+  mousePressX = mouseX;
+  mousePressY = mouseY;
+  pressed = true;
+  clicked = true;
+    
+  clickX = mouseX;
+  clickY = mouseY;
+}
+
+function touchEnded() {
+  if (!isTouchDevice())
+    return;
+
+  mousePressX = mouseX;
+  mousePressY = mouseY;
+  
+  if (startTime > 0) {
+    pressed = false;
+   } 
 }
 
 function mouseClicked() {
-  if( !isTouchDevice() )
+  if (!isTouchDevice())
     return;
 
   singleTap();
