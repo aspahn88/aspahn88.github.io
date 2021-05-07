@@ -147,11 +147,11 @@ function setup()
   buttons[10]  = new Button(inputAreaX+2*sizeOfInputArea/4, inputAreaY+2*sizeOfInputArea/4, sizeOfInputArea/4, sizeOfInputArea/4, "S", btnTextColor, btnFillColor);
   buttons[11]  = new Button(inputAreaX+3*sizeOfInputArea/4, inputAreaY+2*sizeOfInputArea/4, sizeOfInputArea/4, sizeOfInputArea/4, "T", btnTextColor, btnFillColor);
 
-  buttons[12]  = new Button(inputAreaX, inputAreaY+3*sizeOfInputArea/4, sizeOfInputArea/4, sizeOfInputArea/4, "Del", btnTextColor, btnFillColor);    
-  buttons[13]  = new Button(inputAreaX+sizeOfInputArea/4, inputAreaY+3*sizeOfInputArea/4, sizeOfInputArea/4, sizeOfInputArea/4, "Spc", btnTextColor, btnFillColor);  
+  buttons[12]  = new Button(inputAreaX, inputAreaY+3*sizeOfInputArea/4, sizeOfInputArea/4, sizeOfInputArea/4, "Del", btnTextColor, "#ff0000");    
+  buttons[13]  = new Button(inputAreaX+sizeOfInputArea/4, inputAreaY+3*sizeOfInputArea/4, sizeOfInputArea/4, sizeOfInputArea/4, "Spc", btnTextColor, "#0000FF");  
   buttons[14]  = new Button(inputAreaX+2*sizeOfInputArea/4, inputAreaY+3*sizeOfInputArea/4, sizeOfInputArea/2, sizeOfInputArea/4, ">", btnTextColor, btnFillColor);
 
-  buttons[15]  = new Button(DEVICE_WIDTH-240, DEVICE_HEIGHT-240, 240, 240, "NEXT>", "#000000", "#ff0000");
+  buttons[15]  = new Button(DEVICE_WIDTH-200, DEVICE_HEIGHT-200, 200, 200, "NEXT>", "#000000", "#ff0000");
 
   predictiveChar[0] = [7,6,11,9,1,10,2,6,5,28,32,22,24,29,20,25];       // A
   predictiveChar[1] = [6,3,0,5,9,8,32];                                 // B
@@ -212,15 +212,16 @@ function draw()
   rect(width/2-sizeOfInputArea/2, height/2-sizeOfInputArea/2, sizeOfInputArea, sizeOfInputArea); //input area should be 1" by 1"
 
   //check to see if the user hasn't started yet
-  if (startTime==0 & !mouseIsPressed)
+  if (startTime==0 && !mouseIsPressed && !clicked)
   {
     fill(128);
     textAlign(CENTER);
     text("Click to start time!", 280, 150); //display this message until the user clicks!
   }
 
-  if (startTime==0 & mouseIsPressed)
+  if (startTime==0 && !mouseIsPressed && clicked)
   {
+    clicked = false;
     nextTrial(); //start the trials!
   }
 
@@ -294,7 +295,7 @@ function commitChar()
  if (pressedButton != -1) {
     // the different cases of what the button should do
     
-    if (buttons[pressedButton].insideButton(mouseX, mouseY)){
+    if (buttons[pressedButton].insideButton(mousePressX, mousePressY)){
       switch (buttons[pressedButton].label) {
         case "Del" :
           if (currentTyped.length > 0) {
@@ -350,7 +351,7 @@ function commitChar()
        // code for if you want to do a swipe
       // this code swipes if you start on the ">" and swipe to the left (doesn't work on 2nd screen)
       // I found that swipe isn't super useful so this code is pretty basic but you would use this idea for a swipe
-      if (buttons[pressedButton].getLabel() == "Spc" &&  mouseX < buttons[pressedButton].x)
+      if ((buttons[pressedButton].getLabel() == "Spc" || buttons[pressedButton].getLabel() == "Z")  &&  mousePressX < buttons[pressedButton].x)
       {
         screen = screen + 1;
         changeScreens();
@@ -371,6 +372,8 @@ function changeScreens()
     {
       buttons[i].setLabel(screenLetters0[i]);
     }
+    buttons[12].setButtonColor("#ff0000");
+    buttons[13].setButtonColor("#0000FF");
   }
   else if (screen == 1)
   {
@@ -378,6 +381,8 @@ function changeScreens()
     {
       buttons[i].setLabel(screenLetters1[i]);
     }
+    buttons[12].setButtonColor(btnFillColor);
+    buttons[13].setButtonColor(btnFillColor);
   }
 }
 
