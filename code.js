@@ -1,6 +1,6 @@
 const DEVICE_WIDTH = 900;
 const DEVICE_HEIGHT = 926;
-const DPIofYourDeviceScreen = 429; //you will need to measure or look up the DPI or PPI of your device/browser to make sure you get the right scale!!
+const DPIofYourDeviceScreen = 401; //you will need to measure or look up the DPI or PPI of your device/browser to make sure you get the right scale!!
 //const DPIofYourDeviceScreen = 110; //you will need to measure or look up the DPI or PPI of your device/browser to make sure you get the right scale!!
 const sizeOfInputArea = DPIofYourDeviceScreen*1; //aka, 1.0 inches square!
 
