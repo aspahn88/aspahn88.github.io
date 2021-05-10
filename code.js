@@ -219,7 +219,7 @@ function draw()
 
   if (startTime==0 && !mouseIsPressed && clicked) {
     clicked = false;
-    textSize(40); //set the text size for all displayed text including buttons     
+    //textSize(40); //set the text size for all displayed text including buttons     
     nextTrial(); //start the trials!
   }
 
